@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TodoProps } from "../components/Card";
+import { TodoProps } from "@/components/Card";
 import { prisma } from "../db";
 import { redirect } from "next/navigation";
 

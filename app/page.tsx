@@ -1,6 +1,6 @@
-import Card, { TodoProps } from "./components/Card";
+import Card, { TodoProps } from "@/components/Card";
 import { prisma } from "./db";
-import Button from "./components/Button";
+import Button from "@/components/Button";
 import Link from "next/link";
 
 function getTodos() {
