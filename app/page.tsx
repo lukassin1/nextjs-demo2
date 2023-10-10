@@ -8,6 +8,7 @@ function getTodos() {
 }
 async function toggleTodo(id: string, complete: boolean) {
   "use server";
+
   console.log(id, complete);
 
   if (complete == true) {
@@ -36,7 +37,7 @@ export default async function Home() {
   return (
     <>
       <Link
-        className="p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
+        className="transition ease-in-out delay-150 hover:scale-110 hover:shadow-orange-400 duration-300 p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
         href="/CreateTodo"
       >
         Create Todo
@@ -48,7 +49,7 @@ export default async function Home() {
 
       <Button value={"clear completed"} click={clearCompleted}></Button>
 
-      <div className="  rounded-3xl m-6 shadow-md flex flex-wrap   text-black">
+      <div className="  rounded-3xl m-5 p-5 shadow grid  grid-flow-col-dense  text-black">
         {todos.map((todo) => {
           return (
             <Card

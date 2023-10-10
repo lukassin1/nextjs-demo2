@@ -1,6 +1,8 @@
 "use client";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import MyLabel from "./MyLabel";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export type TodoProps = {
   id: string;
@@ -11,7 +13,13 @@ export type TodoProps = {
   toggleTodo: (id: string, complete: boolean) => void;
 };
 
+const handleClick = (todo: TodoProps, router: AppRouterInstance) => {
+  todo.toggleTodo(todo.id.toString(), todo.complete);
+  router.refresh();
+};
+
 export default function Card(todo: TodoProps) {
+  const router = useRouter();
   return (
     <>
       <div
@@ -22,8 +30,8 @@ export default function Card(todo: TodoProps) {
         }
       >
         <label
-          className="p-4 min-w-full text-center cursor-pointer   bg-orange-400 rounded-3xl  shadow-lg m-1  space-x-4"
-          onClick={() => todo.toggleTodo(todo.id.toString(), todo.complete)}
+          className="p-4 min-w-full text-center cursor-pointer transition ease-in-out delay-150   hover:scale-110  duration-300   bg-orange-400 rounded-3xl  shadow-lg m-1  space-x-4"
+          onClick={() => handleClick(todo, router)}
         >
           complete
         </label>
@@ -31,7 +39,7 @@ export default function Card(todo: TodoProps) {
         <MyLabel value={"description: " + todo.description} />
         <MyLabel value={"due: " + todo.due} />
         <Link
-          className="p-4 min-w-full text-center   bg-orange-400 rounded-3xl  shadow-lg m-1  space-x-4"
+          className="p-4 min-w-full text-center transition ease-in-out delay-150  hover:scale-110  duration-300   bg-orange-400 rounded-3xl  shadow-lg m-1  space-x-4"
           href={{
             pathname: "/EditTodo",
             query: {
@@ -48,4 +56,3 @@ export default function Card(todo: TodoProps) {
     </>
   );
 }
-;

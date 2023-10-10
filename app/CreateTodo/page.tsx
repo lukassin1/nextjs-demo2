@@ -9,7 +9,7 @@ async function createTodo(data: FormData) {
   const dueprop = data.get("due")?.valueOf().toString();
 
   await prisma.todo.create({
-    data: {title:title,description:desc,due:dueprop}
+    data: { title: title, description: desc, due: dueprop, complete: false },
   });
   redirect("/");
 }
@@ -30,19 +30,19 @@ export default function CreateTodo() {
         className="p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
       />
       <input
-        type="text"
+        type="date"
         name="due"
         placeholder="due"
         className="p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
       />
       <button
         type="submit"
-        className="p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
+        className="transition ease-in-out delay-150  hover:scale-110 hover:shadow-orange-400 duration-300 p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
       >
         add Todo
       </button>
       <Link
-        className="p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
+        className="transition ease-in-out delay-150 hover:scale-110 hover:shadow-orange-400 duration-300  p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
         href={"/"}
       >
         cancel

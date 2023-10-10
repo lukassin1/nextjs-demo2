@@ -9,7 +9,7 @@ async function editTodo(data: FormData) {
   const desc = data.get("description")?.valueOf();
   const dueprop = data.get("due")?.valueOf();
   const todoID = data.get("id")?.valueOf().toString();
-   await prisma.todo.update({
+  await prisma.todo.update({
     where: { id: todoID },
     data: { title: title, description: desc, due: dueprop },
   });
@@ -42,19 +42,19 @@ export default function EditTodo({
         className="p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
       />
       <input
-        type="text"
+        type="date"
         name="due"
         defaultValue={searchParams?.due}
         className="p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
       />
       <button
         type="submit"
-        className="p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
+        className="transition ease-in-out delay-150 hover:scale-110 hover:shadow-orange-400 duration-300 p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
       >
         submit
       </button>
       <Link
-        className="p-6 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
+        className="p-6 transition ease-in-out delay-150 hover:scale-110 hover:shadow-orange-400 duration-300 max-w-sm mx-auto bg-white rounded-3xl  shadow-md m-6 flex items-center space-x-1 space-y-5 group text-black"
         href={"/"}
       >
         cancel
